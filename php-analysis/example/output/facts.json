@@ -1,0 +1,729 @@
+{
+  "files": {
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "parseErrors": [],
+      "namespace": null,
+      "uses": [],
+      "functions": [],
+      "classes": [],
+      "includes": [
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+          "type": "require_once",
+          "line": 8,
+          "inFunction": false,
+          "conditional": false,
+          "dynamic": false,
+          "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+          "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+          "raw": "dirname(__FILE__) . '/config.php'"
+        },
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+          "type": "require_once",
+          "line": 9,
+          "inFunction": false,
+          "conditional": false,
+          "dynamic": false,
+          "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+          "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+          "raw": "ROOT_PATH . '/inc/functions.php'"
+        },
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+          "type": "require_once",
+          "line": 10,
+          "inFunction": false,
+          "conditional": false,
+          "dynamic": false,
+          "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/User.php",
+          "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/User.php",
+          "raw": "ROOT_PATH . '/inc/User.php'"
+        },
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+          "type": "include",
+          "line": 12,
+          "inFunction": false,
+          "conditional": false,
+          "dynamic": false,
+          "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/header.php",
+          "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/header.php",
+          "raw": "ROOT_PATH . '/inc/header.php'"
+        },
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+          "type": "include",
+          "line": 25,
+          "inFunction": false,
+          "conditional": true,
+          "dynamic": false,
+          "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/admin_panel.php",
+          "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/admin_panel.php",
+          "raw": "ROOT_PATH . '/inc/admin_panel.php'"
+        },
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+          "type": "include",
+          "line": 31,
+          "inFunction": false,
+          "conditional": true,
+          "dynamic": true,
+          "literalTarget": null,
+          "toFile": null,
+          "raw": "$_GET['tab'] . '.php'"
+        },
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+          "type": "include",
+          "line": 34,
+          "inFunction": false,
+          "conditional": false,
+          "dynamic": false,
+          "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/footer.php",
+          "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/footer.php",
+          "raw": "ROOT_PATH . '/inc/footer.php'"
+        }
+      ],
+      "topLevel": {
+        "entityKind": "page",
+        "name": "index.php",
+        "calls": [
+          "session_start",
+          "dirname",
+          "log_page_view",
+          "User::fromSession",
+          "get_product_name",
+          "format_price",
+          "$user->canManageCatalog"
+        ],
+        "superglobals": [
+          "_GET[id]",
+          "_GET",
+          "_GET[tab]"
+        ],
+        "sql": [],
+        "outputs": [
+          {
+            "kind": "session_start",
+            "line": 6,
+            "text": "session_start();",
+            "conditional": false
+          },
+          {
+            "kind": "echo",
+            "line": 21,
+            "text": "echo '<h1>' . $productName . '</h1>';",
+            "conditional": false
+          },
+          {
+            "kind": "echo",
+            "line": 22,
+            "text": "echo '<p>Price: ' . format_price(1999) . '</p>';",
+            "conditional": false
+          }
+        ],
+        "includesSeen": [
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+            "type": "require_once",
+            "line": 8,
+            "inFunction": false,
+            "conditional": false,
+            "dynamic": false,
+            "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+            "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+            "raw": "dirname(__FILE__) . '/config.php'"
+          },
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+            "type": "require_once",
+            "line": 9,
+            "inFunction": false,
+            "conditional": false,
+            "dynamic": false,
+            "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+            "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+            "raw": "ROOT_PATH . '/inc/functions.php'"
+          },
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+            "type": "require_once",
+            "line": 10,
+            "inFunction": false,
+            "conditional": false,
+            "dynamic": false,
+            "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/User.php",
+            "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/User.php",
+            "raw": "ROOT_PATH . '/inc/User.php'"
+          },
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+            "type": "include",
+            "line": 12,
+            "inFunction": false,
+            "conditional": false,
+            "dynamic": false,
+            "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/header.php",
+            "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/header.php",
+            "raw": "ROOT_PATH . '/inc/header.php'"
+          },
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+            "type": "include",
+            "line": 25,
+            "inFunction": false,
+            "conditional": true,
+            "dynamic": false,
+            "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/admin_panel.php",
+            "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/admin_panel.php",
+            "raw": "ROOT_PATH . '/inc/admin_panel.php'"
+          },
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+            "type": "include",
+            "line": 31,
+            "inFunction": false,
+            "conditional": true,
+            "dynamic": true,
+            "literalTarget": null,
+            "toFile": null,
+            "raw": "$_GET['tab'] . '.php'"
+          },
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+            "type": "include",
+            "line": 34,
+            "inFunction": false,
+            "conditional": false,
+            "dynamic": false,
+            "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/footer.php",
+            "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/footer.php",
+            "raw": "ROOT_PATH . '/inc/footer.php'"
+          }
+        ]
+      }
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php",
+      "parseErrors": [],
+      "namespace": null,
+      "uses": [],
+      "functions": [],
+      "classes": [],
+      "includes": [
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php",
+          "type": "require_once",
+          "line": 8,
+          "inFunction": false,
+          "conditional": false,
+          "dynamic": false,
+          "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+          "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+          "raw": "dirname(__FILE__) . '/config.php'"
+        },
+        {
+          "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php",
+          "type": "require_once",
+          "line": 9,
+          "inFunction": false,
+          "conditional": false,
+          "dynamic": false,
+          "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+          "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+          "raw": "ROOT_PATH . '/inc/functions.php'"
+        }
+      ],
+      "topLevel": {
+        "entityKind": "page",
+        "name": "cart.php",
+        "calls": [
+          "dirname",
+          "session_start",
+          "format_price"
+        ],
+        "superglobals": [
+          "_SESSION[cart]",
+          "_SESSION"
+        ],
+        "sql": [],
+        "outputs": [
+          {
+            "kind": "session_start",
+            "line": 11,
+            "text": "session_start();",
+            "conditional": false
+          },
+          {
+            "kind": "echo",
+            "line": 18,
+            "text": "echo 'Cart total: ' . $total;",
+            "conditional": false
+          }
+        ],
+        "includesSeen": [
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php",
+            "type": "require_once",
+            "line": 8,
+            "inFunction": false,
+            "conditional": false,
+            "dynamic": false,
+            "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+            "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+            "raw": "dirname(__FILE__) . '/config.php'"
+          },
+          {
+            "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php",
+            "type": "require_once",
+            "line": 9,
+            "inFunction": false,
+            "conditional": false,
+            "dynamic": false,
+            "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+            "toFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+            "raw": "ROOT_PATH . '/inc/functions.php'"
+          }
+        ]
+      }
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+      "parseErrors": [],
+      "namespace": null,
+      "uses": [],
+      "functions": [
+        {
+          "entityKind": "function",
+          "name": "get_db_connection",
+          "line": 15,
+          "doc": {
+            "text": "Open the (mysqli) database connection used by the rest of the app.\n@return mysqli",
+            "formal": true
+          },
+          "params": [],
+          "calls": [
+            "mysqli_connect"
+          ],
+          "superglobals": [],
+          "sql": [],
+          "outputs": [],
+          "includesSeen": []
+        }
+      ],
+      "classes": [],
+      "includes": [],
+      "topLevel": {
+        "entityKind": "page",
+        "name": "config.php",
+        "calls": [
+          "define",
+          "dirname",
+          "define",
+          "define"
+        ],
+        "superglobals": [],
+        "sql": [],
+        "outputs": [],
+        "includesSeen": []
+      }
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+      "parseErrors": [],
+      "namespace": null,
+      "uses": [],
+      "functions": [
+        {
+          "entityKind": "function",
+          "name": "get_product_name",
+          "line": 8,
+          "doc": {
+            "text": "Look up a product's display name by id.\n\n@param int $productId Product primary key.\n@return string Product name, or an empty string if not found.",
+            "formal": true
+          },
+          "params": [
+            "$productId"
+          ],
+          "calls": [
+            "get_db_connection",
+            "mysqli_query",
+            "intval",
+            "mysqli_fetch_assoc"
+          ],
+          "superglobals": [],
+          "sql": [
+            {
+              "line": 10,
+              "text": "SELECT name FROM products WHERE id = ",
+              "conditional": false
+            }
+          ],
+          "outputs": [],
+          "includesSeen": []
+        },
+        {
+          "entityKind": "function",
+          "name": "format_price",
+          "line": 17,
+          "doc": {
+            "text": "NOTE: no docblock on purpose - this is one of the \"undocumented\" functions\n\nthe extractor should flag as a Spec gap.",
+            "formal": false
+          },
+          "params": [
+            "$cents"
+          ],
+          "calls": [
+            "number_format"
+          ],
+          "superglobals": [],
+          "sql": [],
+          "outputs": [],
+          "includesSeen": []
+        },
+        {
+          "entityKind": "function",
+          "name": "log_page_view",
+          "line": 25,
+          "doc": {
+            "text": "Record a page view for basic analytics.\nWrites directly to the hits table - no return value.",
+            "formal": true
+          },
+          "params": [
+            "$page"
+          ],
+          "calls": [
+            "get_db_connection",
+            "mysqli_query"
+          ],
+          "superglobals": [
+            "_SERVER[REMOTE_ADDR]",
+            "_SERVER"
+          ],
+          "sql": [
+            {
+              "line": 27,
+              "text": "INSERT INTO hits (page, ip) VALUES ('",
+              "conditional": false
+            }
+          ],
+          "outputs": [],
+          "includesSeen": []
+        }
+      ],
+      "classes": [],
+      "includes": [],
+      "topLevel": {
+        "entityKind": "page",
+        "name": "functions.php",
+        "calls": [],
+        "superglobals": [],
+        "sql": [],
+        "outputs": [],
+        "includesSeen": []
+      }
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/User.php": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/User.php",
+      "parseErrors": [],
+      "namespace": null,
+      "uses": [],
+      "functions": [],
+      "classes": [
+        {
+          "entityKind": "class",
+          "name": "User",
+          "line": 5,
+          "doc": {
+            "text": "Represents the logged-in shop user, backed by $_SESSION.",
+            "formal": true
+          },
+          "calls": [],
+          "superglobals": [],
+          "sql": [],
+          "outputs": [],
+          "includesSeen": [],
+          "extends": null,
+          "implements": [],
+          "methods": [
+            {
+              "entityKind": "method",
+              "name": "fromSession",
+              "line": 16,
+              "doc": {
+                "text": "Load the current user from the session, if any.\n@return User|null",
+                "formal": true
+              },
+              "params": [],
+              "calls": [],
+              "superglobals": [
+                "_SESSION[user_id]",
+                "_SESSION",
+                "_SESSION[is_admin]"
+              ],
+              "sql": [],
+              "outputs": [],
+              "includesSeen": [],
+              "visibility": "public",
+              "isStatic": true,
+              "isAbstract": false
+            },
+            {
+              "entityKind": "method",
+              "name": "canManageCatalog",
+              "line": 27,
+              "doc": {
+                "text": "No docblock - deliberately undocumented for the Spec \"gaps\" section.",
+                "formal": false
+              },
+              "params": [],
+              "calls": [],
+              "superglobals": [],
+              "sql": [],
+              "outputs": [],
+              "includesSeen": [],
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false
+            }
+          ],
+          "properties": [
+            {
+              "name": "id",
+              "visibility": "public",
+              "doc": {
+                "text": "@var int|null",
+                "formal": true
+              }
+            },
+            {
+              "name": "isAdmin",
+              "visibility": "private",
+              "default": "false",
+              "doc": {
+                "text": "@var bool",
+                "formal": true
+              }
+            }
+          ]
+        }
+      ],
+      "includes": [],
+      "topLevel": {
+        "entityKind": "page",
+        "name": "User.php",
+        "calls": [],
+        "superglobals": [],
+        "sql": [],
+        "outputs": [],
+        "includesSeen": []
+      }
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/header.php": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/header.php",
+      "parseErrors": [],
+      "namespace": null,
+      "uses": [],
+      "functions": [],
+      "classes": [],
+      "includes": [],
+      "topLevel": {
+        "entityKind": "page",
+        "name": "header.php",
+        "calls": [],
+        "superglobals": [
+          "_SESSION[user_id]",
+          "_SESSION"
+        ],
+        "sql": [],
+        "outputs": [
+          {
+            "kind": "echo",
+            "line": 10,
+            "text": "echo $_SESSION['user_id'];",
+            "conditional": true
+          }
+        ],
+        "includesSeen": []
+      }
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/admin_panel.php": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/admin_panel.php",
+      "parseErrors": [],
+      "namespace": null,
+      "uses": [],
+      "functions": [],
+      "classes": [],
+      "includes": [],
+      "topLevel": {
+        "entityKind": "page",
+        "name": "admin_panel.php",
+        "calls": [
+          "get_db_connection",
+          "mysqli_query"
+        ],
+        "superglobals": [],
+        "sql": [
+          {
+            "line": 7,
+            "text": "DELETE FROM sessions WHERE expires_at < NOW()",
+            "conditional": false
+          }
+        ],
+        "outputs": [
+          {
+            "kind": "echo",
+            "line": 8,
+            "text": "echo '<section class=\"admin\">Admin panel</section>';",
+            "conditional": false
+          }
+        ],
+        "includesSeen": []
+      }
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/footer.php": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/footer.php",
+      "parseErrors": [],
+      "namespace": null,
+      "uses": [],
+      "functions": [],
+      "classes": [],
+      "includes": [],
+      "topLevel": {
+        "entityKind": "page",
+        "name": "footer.php",
+        "calls": [],
+        "superglobals": [],
+        "sql": [],
+        "outputs": [],
+        "includesSeen": []
+      }
+    }
+  },
+  "edges": [
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+      "type": "require_once",
+      "conditional": false,
+      "inFunction": false,
+      "dynamic": false,
+      "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+      "raw": "dirname(__FILE__) . '/config.php'",
+      "line": 8
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+      "type": "require_once",
+      "conditional": false,
+      "inFunction": false,
+      "dynamic": false,
+      "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+      "raw": "ROOT_PATH . '/inc/functions.php'",
+      "line": 9
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/User.php",
+      "type": "require_once",
+      "conditional": false,
+      "inFunction": false,
+      "dynamic": false,
+      "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/User.php",
+      "raw": "ROOT_PATH . '/inc/User.php'",
+      "line": 10
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/header.php",
+      "type": "include",
+      "conditional": false,
+      "inFunction": false,
+      "dynamic": false,
+      "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/header.php",
+      "raw": "ROOT_PATH . '/inc/header.php'",
+      "line": 12
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/admin_panel.php",
+      "type": "include",
+      "conditional": true,
+      "inFunction": false,
+      "dynamic": false,
+      "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/admin_panel.php",
+      "raw": "ROOT_PATH . '/inc/admin_panel.php'",
+      "line": 25
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "to": null,
+      "type": "include",
+      "conditional": true,
+      "inFunction": false,
+      "dynamic": true,
+      "literalTarget": null,
+      "raw": "$_GET['tab'] . '.php'",
+      "line": 31
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/footer.php",
+      "type": "include",
+      "conditional": false,
+      "inFunction": false,
+      "dynamic": false,
+      "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/footer.php",
+      "raw": "ROOT_PATH . '/inc/footer.php'",
+      "line": 34
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+      "type": "require_once",
+      "conditional": false,
+      "inFunction": false,
+      "dynamic": false,
+      "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/config.php",
+      "raw": "dirname(__FILE__) . '/config.php'",
+      "line": 8
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+      "type": "require_once",
+      "conditional": false,
+      "inFunction": false,
+      "dynamic": false,
+      "literalTarget": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/inc/functions.php",
+      "raw": "ROOT_PATH . '/inc/functions.php'",
+      "line": 9
+    }
+  ],
+  "unresolved": [
+    {
+      "fromFile": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+      "type": "include",
+      "line": 31,
+      "inFunction": false,
+      "conditional": true,
+      "dynamic": true,
+      "literalTarget": null,
+      "toFile": null,
+      "raw": "$_GET['tab'] . '.php'"
+    }
+  ],
+  "constants": {
+    "ROOT_PATH": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app",
+    "DB_HOST": "localhost",
+    "DB_NAME": "legacy_shop"
+  },
+  "root": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app",
+  "entries": [
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/index.php",
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/php-analysis/example/app/cart.php"
+  ]
+}

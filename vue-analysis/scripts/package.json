@@ -1,0 +1,10 @@
+{
+  "name": "vue-analysis-extractor",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Static-analysis driver for Vue 3 Options API code (CDN globals + Vite/SFC ESM) - see ../SKILL.md.",
+  "dependencies": {
+    "acorn": "8.14.0"
+  }
+}

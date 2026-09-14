@@ -1,0 +1,21 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Env files (none expected here, but just in case)
+.env
+.env.local
+
+# Default output directories the extract.mjs drivers write to when --out
+# isn't passed (php-analysis / vue-analysis). Throwaway analysis runs -
+# NOT the same as the committed example/output/ reference dirs, which have
+# an explicit path and are intentionally tracked.
+**/php-analysis-out/
+**/vue-analysis-out/
+
+# npm logs, in case someone re-installs deps instead of using the vendored
+# scripts/node_modules/ that's checked in on purpose.
+npm-debug.log*

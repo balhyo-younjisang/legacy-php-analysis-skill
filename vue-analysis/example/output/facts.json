@@ -1,0 +1,524 @@
+{
+  "files": {
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/main.js": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/main.js",
+      "kind": "js",
+      "imports": [
+        {
+          "source": "vue",
+          "line": 1,
+          "specifiers": [
+            {
+              "local": "createApp",
+              "imported": "createApp"
+            }
+          ]
+        },
+        {
+          "source": "./App.vue",
+          "line": 2,
+          "specifiers": [
+            {
+              "local": "App",
+              "imported": "default"
+            }
+          ]
+        }
+      ],
+      "components": [],
+      "templateTags": []
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html",
+      "kind": "html",
+      "htmlScripts": [
+        {
+          "src": "https://unpkg.com/vue@3",
+          "module": false,
+          "inline": false
+        },
+        {
+          "src": "./widgets/counter.js",
+          "module": false,
+          "inline": false
+        },
+        {
+          "inline": true,
+          "virtualPath": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html#inline-1",
+          "module": false,
+          "parseError": null
+        }
+      ],
+      "components": [
+        {
+          "entityKind": "component",
+          "name": "(root app)",
+          "line": 4,
+          "doc": null,
+          "props": [],
+          "dataFields": [
+            "total"
+          ],
+          "componentsMap": {},
+          "declaredEmits": [],
+          "mixins": [],
+          "methods": [
+            {
+              "entityKind": "method",
+              "name": "onCounted",
+              "line": 12,
+              "doc": {
+                "text": "Handle the \"counted\" event bubbled up from <counter>.",
+                "formal": true
+              },
+              "params": [
+                "n"
+              ],
+              "calls": [],
+              "externalReads": [],
+              "io": [
+                {
+                  "kind": "http:fetch",
+                  "target": "'/api/log?count=' + n",
+                  "line": 14,
+                  "conditional": false,
+                  "text": "fetch('/api/log?count=' + n)"
+                }
+              ],
+              "outputs": []
+            }
+          ],
+          "computed": [],
+          "watchers": [],
+          "lifecycle": [],
+          "calls": [
+            "onCounted"
+          ],
+          "externalReads": [],
+          "io": [],
+          "outputs": [],
+          "templateOption": null,
+          "isRoot": true,
+          "propNames": [],
+          "definedIn": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html#inline-1"
+        }
+      ],
+      "imports": [],
+      "templateTags": [
+        "counter"
+      ]
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue",
+      "kind": "vue",
+      "imports": [
+        {
+          "source": "axios",
+          "line": 2,
+          "specifiers": [
+            {
+              "local": "axios",
+              "imported": "default"
+            }
+          ]
+        },
+        {
+          "source": "./components/HelloWorld.vue",
+          "line": 3,
+          "specifiers": [
+            {
+              "local": "HelloWorld",
+              "imported": "default"
+            }
+          ]
+        },
+        {
+          "source": "./components/CompositionWidget.vue",
+          "line": 4,
+          "specifiers": [
+            {
+              "local": "CompositionWidget",
+              "imported": "default"
+            }
+          ]
+        }
+      ],
+      "components": [
+        {
+          "entityKind": "component",
+          "name": "App",
+          "line": 6,
+          "doc": null,
+          "props": [],
+          "dataFields": [
+            "userName",
+            "products"
+          ],
+          "componentsMap": {
+            "HelloWorld": "HelloWorld",
+            "CompositionWidget": "CompositionWidget"
+          },
+          "declaredEmits": [],
+          "mixins": [],
+          "methods": [
+            {
+              "entityKind": "method",
+              "name": "refresh",
+              "line": 31,
+              "doc": {
+                "text": "Reload the product list from the API.\n@returns {Promise<void>}",
+                "formal": true
+              },
+              "params": [],
+              "calls": [],
+              "externalReads": [],
+              "io": [
+                {
+                  "kind": "http:get",
+                  "target": "\"/api/products\"",
+                  "line": 32,
+                  "conditional": false,
+                  "text": "axios.get('/api/products')"
+                },
+                {
+                  "kind": "store:dispatch",
+                  "target": "\"cart/sync\"",
+                  "line": 34,
+                  "conditional": false,
+                  "text": "this.$store.dispatch('cart/sync')"
+                }
+              ],
+              "outputs": []
+            },
+            {
+              "entityKind": "method",
+              "name": "onGreet",
+              "line": 38,
+              "doc": {
+                "text": "no docblock on purpose - a Spec gap",
+                "formal": false
+              },
+              "params": [
+                "payload"
+              ],
+              "calls": [],
+              "externalReads": [],
+              "io": [],
+              "outputs": [
+                {
+                  "kind": "console",
+                  "event": "log",
+                  "line": 39,
+                  "conditional": false,
+                  "text": "console.log('greeted:', payload)"
+                },
+                {
+                  "kind": "emit",
+                  "event": "\"app-greeted\"",
+                  "line": 40,
+                  "conditional": false,
+                  "text": "this.$emit('app-greeted', payload)"
+                }
+              ]
+            }
+          ],
+          "computed": [
+            {
+              "entityKind": "computed",
+              "name": "productCount",
+              "line": 21,
+              "doc": {
+                "text": "Number of loaded products.",
+                "formal": true
+              },
+              "params": [],
+              "calls": [],
+              "externalReads": [],
+              "io": [],
+              "outputs": []
+            }
+          ],
+          "watchers": [],
+          "lifecycle": [
+            {
+              "entityKind": "lifecycle",
+              "name": "created",
+              "line": 44,
+              "doc": null,
+              "params": [],
+              "calls": [
+                "refresh"
+              ],
+              "externalReads": [],
+              "io": [],
+              "outputs": []
+            }
+          ],
+          "calls": [
+            "onGreet",
+            "refresh"
+          ],
+          "externalReads": [],
+          "io": [],
+          "outputs": [],
+          "templateOption": null,
+          "propNames": []
+        }
+      ],
+      "hasScriptSetup": false,
+      "templateTags": [
+        "HelloWorld",
+        "CompositionWidget",
+        "UnknownWidget"
+      ]
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/widgets/counter.js": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/widgets/counter.js",
+      "kind": "js",
+      "imports": [],
+      "components": [
+        {
+          "entityKind": "component",
+          "name": "counter",
+          "line": 5,
+          "doc": {
+            "text": "Global \"counter\" widget, registered on the CDN build of Vue.\nLegacy pattern: no bundler, no SFC - just Vue.component() + a template string.",
+            "formal": true
+          },
+          "props": [
+            {
+              "name": "start",
+              "type": "Number",
+              "required": false,
+              "default": "0"
+            }
+          ],
+          "dataFields": [
+            "count"
+          ],
+          "componentsMap": {},
+          "declaredEmits": [],
+          "mixins": [],
+          "methods": [
+            {
+              "entityKind": "method",
+              "name": "increment",
+              "line": 20,
+              "doc": {
+                "text": "Increment the click counter and tell the page about it.",
+                "formal": true
+              },
+              "params": [],
+              "calls": [],
+              "externalReads": [],
+              "io": [],
+              "outputs": [
+                {
+                  "kind": "emit",
+                  "event": "\"counted\"",
+                  "line": 22,
+                  "conditional": false,
+                  "text": "this.$emit('counted', this.count)"
+                }
+              ]
+            },
+            {
+              "entityKind": "method",
+              "name": "reset",
+              "line": 26,
+              "doc": {
+                "text": "undocumented on purpose",
+                "formal": false
+              },
+              "params": [],
+              "calls": [],
+              "externalReads": [],
+              "io": [],
+              "outputs": []
+            }
+          ],
+          "computed": [],
+          "watchers": [],
+          "lifecycle": [],
+          "calls": [
+            "increment"
+          ],
+          "externalReads": [],
+          "io": [],
+          "outputs": [],
+          "templateOption": "<button @click=\"increment\">Clicks: {{ count }}</button>",
+          "globalRegistration": true,
+          "propNames": [
+            "start"
+          ]
+        }
+      ],
+      "templateTags": []
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/HelloWorld.vue": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/HelloWorld.vue",
+      "kind": "vue",
+      "imports": [],
+      "components": [
+        {
+          "entityKind": "component",
+          "name": "HelloWorld",
+          "line": 5,
+          "doc": {
+            "text": "Simple greeting banner. Emits \"greet\" once mounted.",
+            "formal": true
+          },
+          "props": [
+            {
+              "name": "name",
+              "type": "String",
+              "required": true
+            }
+          ],
+          "dataFields": [],
+          "componentsMap": {},
+          "declaredEmits": [
+            "greet"
+          ],
+          "mixins": [],
+          "methods": [],
+          "computed": [],
+          "watchers": [],
+          "lifecycle": [
+            {
+              "entityKind": "lifecycle",
+              "name": "mounted",
+              "line": 14,
+              "doc": null,
+              "params": [],
+              "calls": [],
+              "externalReads": [
+                "prop:name"
+              ],
+              "io": [],
+              "outputs": [
+                {
+                  "kind": "emit",
+                  "event": "\"greet\"",
+                  "line": 15,
+                  "conditional": false,
+                  "text": "this.$emit('greet', { name: this.name })"
+                }
+              ]
+            }
+          ],
+          "calls": [],
+          "externalReads": [],
+          "io": [],
+          "outputs": [],
+          "templateOption": null,
+          "propNames": [
+            "name"
+          ]
+        }
+      ],
+      "hasScriptSetup": false,
+      "templateTags": []
+    },
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/CompositionWidget.vue": {
+      "file": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/CompositionWidget.vue",
+      "kind": "vue",
+      "imports": [
+        {
+          "source": "vue",
+          "line": 6,
+          "specifiers": [
+            {
+              "local": "ref",
+              "imported": "ref"
+            }
+          ]
+        }
+      ],
+      "components": [],
+      "hasScriptSetup": true,
+      "templateTags": [],
+      "scriptSetupOnly": true
+    }
+  },
+  "edges": [
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/main.js",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue",
+      "type": "import"
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/widgets/counter.js",
+      "type": "script-src"
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html#inline-1",
+      "type": "inline-script",
+      "resolvedInline": true
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/HelloWorld.vue",
+      "type": "import"
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/CompositionWidget.vue",
+      "type": "import"
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/widgets/counter.js",
+      "type": "renders",
+      "conditional": false
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/HelloWorld.vue",
+      "type": "renders",
+      "conditional": false
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue",
+      "to": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/CompositionWidget.vue",
+      "type": "renders",
+      "conditional": false
+    }
+  ],
+  "unresolvedEdges": [
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue",
+      "type": "renders",
+      "raw": "UnknownWidget"
+    }
+  ],
+  "externalEdges": [
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/main.js",
+      "type": "import",
+      "target": "vue"
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html",
+      "type": "script-src",
+      "target": "https://unpkg.com/vue@3"
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/App.vue",
+      "type": "import",
+      "target": "axios"
+    },
+    {
+      "from": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/components/CompositionWidget.vue",
+      "type": "import",
+      "target": "vue"
+    }
+  ],
+  "root": "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example",
+  "entries": [
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/vite-app/src/main.js",
+    "/Users/yunjisang/Workspace/krmedics/legacy-php-skills/vue-analysis/example/cdn-app/legacy.html"
+  ]
+}

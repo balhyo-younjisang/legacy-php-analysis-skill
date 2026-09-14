@@ -1,0 +1,10 @@
+{
+  "name": "php-analysis-extractor",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Static-analysis driver for legacy PHP include/require graphs (see ../SKILL.md).",
+  "dependencies": {
+    "php-parser": "3.7.0"
+  }
+}

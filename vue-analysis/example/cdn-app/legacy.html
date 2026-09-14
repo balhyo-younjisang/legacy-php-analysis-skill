@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Legacy CDN page</title></head>
+<body>
+
+<div id="app">
+  <counter start="5" @counted="onCounted"></counter>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script src="./widgets/counter.js"></script>
+
+<script>
+// Root app for this page - global "counter" component registered above
+// is used directly in the HTML markup, no import/SFC involved at all.
+Vue.createApp({
+  data() {
+    return { total: 0 };
+  },
+  methods: {
+    /**
+     * Handle the "counted" event bubbled up from <counter>.
+     */
+    onCounted(n) {
+      this.total = n;
+      fetch('/api/log?count=' + n);
+    },
+  },
+}).mount('#app');
+</script>
+
+</body>
+</html>
