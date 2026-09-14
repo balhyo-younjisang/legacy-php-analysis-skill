@@ -344,8 +344,15 @@ function scanTemplateCalls(templateText) {
 // ------------------------------------------------------------- resolution --
 
 function resolveModulePath(source, currentFile, root) {
-  if (!source.startsWith('.') && !source.startsWith('/')) return { external: true, source };
-  const base = source.startsWith('/') ? path.join(root || path.dirname(currentFile), source.replace(/^\/+/, '')) : path.resolve(path.dirname(currentFile), source);
+  // Non-bundler ESM (no Vite/webpack) commonly cache-busts an import with a
+  // literal query string - `Store.js?251029`, or even an un-evaluated PHP
+  // tag left in the source when the .js file is itself PHP-processed before
+  // being served, `Store.js?<?=filemtime(...)?>`. Neither is part of the
+  // filesystem path, so strip it before resolving or every such import
+  // reports "unresolved" despite the target file existing right there.
+  const cleanSource = source.split('?')[0];
+  if (!cleanSource.startsWith('.') && !cleanSource.startsWith('/')) return { external: true, source };
+  const base = cleanSource.startsWith('/') ? path.join(root || path.dirname(currentFile), cleanSource.replace(/^\/+/, '')) : path.resolve(path.dirname(currentFile), cleanSource);
   const candidates = [base, base + '.js', base + '.mjs', base + '.ts', base + '.vue', path.join(base, 'index.js')];
   for (const c of candidates) {
     if (fs.existsSync(c) && fs.statSync(c).isFile()) return { path: c };
@@ -771,7 +778,14 @@ function setToArr(obj) {
 
 function buildDependencyGraphMd(project, entries) {
   const { edges, root } = project;
-  const label = (f) => (f ? rel(root, f).replace(/"/g, "'") : 'UNRESOLVED');
+  // Mermaid's flowchart syntax uses [ ] { } ( ) to delimit node shape even
+  // inside a quoted label, so a raw import specifier or template expression
+  // containing one of those (e.g. a computed `component :is="..."` binding)
+  // breaks the whole diagram's parse, not just that one node. HTML-entity-
+  // escape the bracket characters (Mermaid renders these back to literal
+  // brackets) instead of passing them through raw.
+  const mermaidSafe = (s) => s.replace(/"/g, "'").replace(/\[/g, '#91;').replace(/\]/g, '#93;').replace(/\{/g, '#123;').replace(/\}/g, '#125;');
+  const label = (f) => (f ? mermaidSafe(rel(root, f)) : 'UNRESOLVED');
   const idOf = (f) => `n${Math.abs(hash(f))}`;
   let md = `# Dependency Graph\n\nFile/component graph: ES \`import\`/dynamic \`import()\` (Vite), \`<script src>\`/inline \`<script>\` (CDN HTML), and \`renders\` edges (a template's custom-tag usage resolved to the file defining that component). Paths relative to \`${root}\`.\n\n`;
   md += `## Entry points\n\n${entries.map((e) => `- \`${rel(root, e)}\``).join('\n')}\n\n`;
@@ -790,14 +804,14 @@ function buildDependencyGraphMd(project, entries) {
     const fromId = idOf(u.from);
     if (!seen.has(u.from)) { md += `  ${fromId}["${label(u.from)}"]\n`; seen.add(u.from); }
     const toId = idOf('unresolved:' + u.type + ':' + u.raw);
-    md += `  ${toId}["⚠️ UNRESOLVED (${u.type}): ${(u.raw || '').replace(/"/g, "'")}"]\n`;
+    md += `  ${toId}["⚠️ UNRESOLVED (${u.type}): ${mermaidSafe(u.raw || '')}"]\n`;
     md += `  ${fromId} -.->|"${u.type} (unresolved)"| ${toId}\n`;
   }
   for (const x of project.externalEdges) {
     const fromId = idOf(x.from);
     if (!seen.has(x.from)) { md += `  ${fromId}["${label(x.from)}"]\n`; seen.add(x.from); }
     const toId = idOf('external:' + x.target);
-    if (!seen.has('external:' + x.target)) { md += `  ${toId}["📦 external: ${x.target}"]\n`; seen.add('external:' + x.target); }
+    if (!seen.has('external:' + x.target)) { md += `  ${toId}["📦 external: ${mermaidSafe(x.target)}"]\n`; seen.add('external:' + x.target); }
     md += `  ${fromId} -->|"${x.type} (external)"| ${toId}\n`;
   }
   md += '```\n\n';

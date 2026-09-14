@@ -72,6 +72,11 @@ const SQL_RE = /^\s*(SELECT|INSERT\s+INTO|UPDATE|DELETE\s+FROM|REPLACE\s+INTO|CR
 const parser = new Engine({
   parser: { extractDoc: true, php7: true, suppressErrors: true },
   ast: { withPositions: true },
+  // Legacy PHP commonly uses the short open tag (`<?` instead of `<?php`).
+  // Without this, php-parser silently treats the whole file as one opaque
+  // "inline" HTML node - no functions/includes/anything recognized, and no
+  // parse error either. short_tags:true makes `<?`/`<?=` parse as PHP.
+  lexer: { short_tags: true },
 });
 
 function slice(src, node, max = 160) {
@@ -525,7 +530,13 @@ function buildDependencyGraphMd(project, entries) {
   md += `## File graph (Mermaid)\n\n\`\`\`mermaid\nflowchart TD\n`;
   const idOf = (f) => `n${Math.abs(hash(f))}`;
   const seenNodes = new Set();
-  const label = (f) => f ? rel(root, f).replace(/"/g, "'") : 'UNRESOLVED';
+  // Mermaid's flowchart syntax uses [ ] { } ( ) to delimit node shape even
+  // inside a quoted label, so a raw PHP snippet like `$_SERVER['DOCUMENT_ROOT']`
+  // dropped straight into a label breaks the whole diagram's parse, not just
+  // that one node. HTML-entity-escape the bracket characters (Mermaid renders
+  // these back to literal brackets) instead of passing them through raw.
+  const mermaidSafe = (s) => s.replace(/"/g, "'").replace(/\[/g, '#91;').replace(/\]/g, '#93;').replace(/\{/g, '#123;').replace(/\}/g, '#125;');
+  const label = (f) => f ? mermaidSafe(rel(root, f)) : 'UNRESOLVED';
   for (const e of edges) {
     const fromId = idOf(e.from);
     if (!seenNodes.has(e.from)) { md += `  ${fromId}["${label(e.from)}"]\n`; seenNodes.add(e.from); }
@@ -536,7 +547,7 @@ function buildDependencyGraphMd(project, entries) {
       md += `  ${fromId} ${style}|"${e.type}${e.inFunction ? ' (in fn)' : ''}"| ${toId}\n`;
     } else {
       const toId = idOf('unresolved:' + e.raw);
-      md += `  ${toId}["⚠️ UNRESOLVED: ${(e.literalTarget || e.raw || '').replace(/"/g, "'")}"]\n`;
+      md += `  ${toId}["⚠️ UNRESOLVED: ${mermaidSafe(e.literalTarget || e.raw || '')}"]\n`;
       md += `  ${fromId} -.->|"${e.type} (dynamic)"| ${toId}\n`;
     }
   }
